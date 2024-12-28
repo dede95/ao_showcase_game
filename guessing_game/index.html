@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-title">
+        <h1>Board our ship or else...</h1> 
+    </div>
+    <div class="game-area">
+        <div class="image-container">
+            <img src="img/spaceship.svg" alt="" class="spaceship">
+            <!-- Button for starting game - this will kick off the game -->
+            
+        </div>
+        <div class="guessing-area">
+            
+            <button class="start-btn" id="start-btn">Start Game</button>
+            <div class="text" id = "intro-area">
+                <p id="intro"></p>
+                <button class="start-btn" id="pregame-btn">Take me to the aliens</button>
+            </div>
+            <div class="hearts">
+                <span id="heart1">❤️</span>
+                <span id="heart2">❤️</span>
+                <span id="heart3">❤️</span>
+            </div>
+            <p class="text" id ="game-text"></p>
+            <div class="options-container" id="options-container"></div>
+            <p class="text" id = "guess-status"></p>
+            <button class="restart-btn" id="restart-btn">Try again?</button>
+        </div>
+    </div>
+    
+    <!-- <div class="game-container">
+        <h1>Guess the Word!</h1>
+        <p class="message" id="guess-status"></p>
+        <div class="options-container" id="options-container"></div>
+        
+        <button class="restart-btn" id="restart-btn">Play Again</button>
+    </div> -->
+    <script src="wordGuessGame.js"></script>
+</body>
+</html>
