@@ -11,8 +11,14 @@ h1 {
     font-size: 80px;
 }
 
-h1, h2 {
+h1, h2, a {
     font-family: "Ubuntu Sans", serif;
+}
+
+a {
+    font-size: 20px;
+    margin: 20px;
+    font-weight: 500;
 }
 
 /* HERO SECTION */
@@ -126,9 +132,18 @@ h1, h2 {
 /* COOL SECTION */
 
 .cool-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(82, 129, 86);
     height: 150px;
 }
+
+.links {
+    margin: 20px;
+}
+
+
 
 @media (max-width: 1300px) {
     .hero-section {
