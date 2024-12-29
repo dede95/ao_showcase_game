@@ -11,6 +11,9 @@ let items = [
 const startButton = document.getElementById('start-btn');
 const introToGameButton = document.getElementById('pregame-btn');
 const tryAgainButton = document.getElementById('restart-btn');
+const hintButton = document.getElementById('hint-btn');
+const closeHint = document.getElementById('close-modal');
+const hintModal = document.getElementById('modal')
 const optionsContainer = document.getElementById('options-container');
 const messageDisplay = document.getElementById('intro');
 const messageDisplayGame = document.getElementById('game-text');
@@ -59,6 +62,7 @@ function startGame() {
     // messageDisplay.style.visibility = "hidden"
     startButton.style.display = 'block';
     introToGameButton.style.display = 'none';
+    hintButton.style.display = 'none';
     if (heartsDisplay) {
         for (let x = 0; x < heartsDisplay.length; x++) {
             heartsDisplay[x].style.visibility = "hidden";
@@ -76,6 +80,7 @@ function introScreen() {
     Can you offer an item to bring along with you?`;
     startButton.style.display = 'none';
     tryAgainButton.style.display = 'none';  // Hide Try Again button
+    hintButton.style.display = 'none';
     optionsContainer.style.display = 'none'; // Hide options (buttons)
 
     type(introText, 0, 100, "intro", () => {
@@ -95,15 +100,16 @@ function loadGame(){
     // livesDisplay.textContent = '❤️❤️❤️'
     // Hearts are visible again
     
-    if (heartsDisplay) {
-        for (let i = 0; i < getHearts.length; i++) {
-            getHearts[i].style.visibility = "visible" ;
-        }
-      }
       type(gameText, 0, 100, "intro", () => {
         // introToGameButton.style.display = 'block'; // Show the button when typing is complete
+        if (heartsDisplay) {
+            for (let i = 0; i < getHearts.length; i++) {
+                getHearts[i].style.visibility = "visible" ;
+            }
+        }
         generateOption(selectedWord); 
         createButtons();
+        hintButton.style.display = 'block';
     });
     // Generate words, including the correct word
     
@@ -219,6 +225,14 @@ introToGameButton.addEventListener('click', loadGame);
 
 //Event listener to restart the game 
 tryAgainButton.addEventListener('click', restartGame)
+
+hintButton.addEventListener("click", () => {
+    hintModal.classList.add("open");
+})
+
+closeHint.addEventListener("click", () => {
+    hintModal.classList.remove("open");
+})
 
 // Event listener to start the game
 startGame();

@@ -22,6 +22,7 @@ p {
 .game-area {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .image-container {
@@ -69,12 +70,63 @@ img#spaceship:hover {
     flex: 2;
     margin: 0;
     padding: 24px 16px;
-    min-width: 700px;
+    min-width: 300px;
     height: 550px;
     background-color: rgb(29, 29, 29);
     border-radius: 0 10px 10px 0;
     align-items: center;
+    justify-content: flex-start;
+}
+
+#hint-btn, #close-modal {
+    justify-self: center;
+    align-self: flex-end;
+    /* align-content: flex-start; */
+    font-family: "Space Mono", serif;
+    font-weight: 400;
+    background-color: #000414;
+    color: white;
+    border-style: outset;
+    border-color: white;
+
+}
+
+#hint-btn:hover, #close-modal:hover {
+    background-color: #ffac5f;
+}
+
+#hint-btn:active, #close-modal:active {
+    border-style: inset;
+}
+
+.modal {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    font-family: "Space Mono", serif;
+    font-weight: 400;
+    background-color: #000414;
+    color: white;
+    border-style: solid;
+    border-color: white;
+}
+
+.modal.open {
+    opacity: 0.9;
+    z-index: 999;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 200px;
 }
 
 #intro-area {
@@ -93,22 +145,25 @@ img#spaceship:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     margin: 0 auto;
+
 }
 
 .message {
     font-size: 1.2em;
     margin-top: 20px;
+    font-weight: 500;
     color: #e74c3c;
 }
 .options-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
     gap: 10px;
     margin-top: 20px;
 }
 .option-btn {
     padding: 15px;
-    font-size: 1.2em;
+    font-size: 1em;
     font-family: "Space Mono", serif;
     font-weight: 400;
     background-color: #000414;
@@ -141,6 +196,7 @@ img#spaceship:hover {
     height: auto;
     font-size: 1.2em;
     align-self: center;
+    justify-self: flex-end;
     background-color: #000414;
     color: white;
     border-style: outset;
