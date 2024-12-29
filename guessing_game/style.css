@@ -1,10 +1,12 @@
 body {
-    font-family: 'Arial', sans-serif;
     text-align: center;
     margin: 20px;
     /* background-color: rgb(29, 29, 29); */
     background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 62%, rgba(0,212,255,1) 100%);
-    
+    font-family: "Space Mono", serif;
+    font-weight: 400;
+    font-size: 20px;
+    font-style: normal;
 }
 
 h1 {
@@ -107,33 +109,69 @@ img#spaceship:hover {
 .option-btn {
     padding: 15px;
     font-size: 1.2em;
-    background-color: #3498db;
+    font-family: "Space Mono", serif;
+    font-weight: 400;
+    background-color: #000414;
     color: white;
-    border: none;
-    border-radius: 5px;
+    border-style: outset;
+    border-color: white;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 .option-btn:hover {
-    background-color: #2980b9;
+    background-color: #011875;
 }
+
+.option-btn:active {
+    background-color: #011875;
+    border-style: inset;
+}
+
 .option-btn.selected {
     /* background-color: #ddaa80; Green for selected button */
     border: 3px solid #070808;
     /* border-color: #333; */
     /* transform: scale(1.1); Slight zoom effect */
 }
+
+.start-btn {
+    font-family: "Space Mono", serif;
+    font-weight: 600;
+    max-width: 200px;
+    height: auto;
+    font-size: 1.2em;
+    align-self: center;
+    background-color: #000414;
+    color: white;
+    border-style: outset;
+    border-color: white;
+    border-radius: 1px;
+    cursor: pointer;
+}
+
+.start-btn:hover {
+    background-color: #011875;
+}
+
+.start-btn:active {
+    background-color: #011875;
+    border-style: inset;
+}
+
 .restart-btn {
     display: none;
+    font-family: "Space Mono", serif;
+    font-weight: 600;
     margin-top: 30px;
     padding: 10px 20px;
     font-size: 1.2em;
-    background-color: #2ecc71;
+    background-color: #5c2200;
     color: white;
-    border: none;
-    border-radius: 5px;
+    border-style: outset;
+    border-color: white;
+    border-radius: 1px;
     cursor: pointer;
 }
 .restart-btn:hover {
-    background-color: #27ae60;
+    background-color: #ffac5f;
 }

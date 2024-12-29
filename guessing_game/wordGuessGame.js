@@ -1,10 +1,10 @@
 // Words for the game 
 let items = [
-    "keyboard",
-    "sunflower",
-    "guitar",
-    "mountain",
-    "pencil"
+    "KEYBOARD",
+    "SUNFLOWER",
+    "GUITAR",
+    "MOUNTAIN",
+    "PENCIL"
 ];
 
 // DOM elements
@@ -23,16 +23,16 @@ const getHearts = [
 ];
 
 let isTyping = false;
-let typingSpeed = 50; // Set the desired typing speed (ms)
+let typingSpeed = 30; // Set the desired typing speed (ms)
 
 // Game vars 
-let selectedWord = "corn";
+let selectedWord = "CORN";
 let itemOptions = [];
 let round = 3;
 let hearts = 3;
 
 
-function type(text, i, t, oe) {
+function type(text, i, t, oe, callback) {
     if (i === 0) {
         if (isTyping) return; // Prevent re-triggering if already typing
         isTyping = true; // Set the flag
@@ -42,11 +42,13 @@ function type(text, i, t, oe) {
     const output = document.getElementById(oe); // Where the text will appear
     output.innerHTML += text.charAt(i); // Append the next character
 
+    
     if (i < text.length - 1) {
         // Continue typing the next character
-        setTimeout(() => type(text, i + 1, typingSpeed, oe), t);
+        setTimeout(() => type(text, i + 1, typingSpeed, oe, callback), t);
     } else {
         isTyping = false; // Reset flag after typing completes
+        if (typeof callback === 'function') callback(); // Call the callback if provided
     }
 }
 
@@ -67,24 +69,26 @@ function startGame() {
 
 function introScreen() {
     // Landing page for the game
-    // messageDisplay.textContent = ""; 
-    const introText = "Some aliens have attacked Earth! \n After they’ve looted the earth and zapped 99% of the population, they spared you for some reason. They offer you a lift to their galaxy - however, they only want to take certain items based on a special rule. \n Can you offer an item to bring along with you?";
+    const introText = `Some aliens have attacked Earth! 
+    After they’ve looted the earth and zapped 99% of the population, they spared you for some reason. 🤔 
+    They offer you a lift to their galaxy - however, they only want to take certain items based on a special rule.
+    
+    Can you offer an item to bring along with you?`;
     startButton.style.display = 'none';
-    introToGameButton.style.display = 'block';
     tryAgainButton.style.display = 'none';  // Hide Try Again button
     optionsContainer.style.display = 'none'; // Hide options (buttons)
-    // heartsDisplay.style.visibility = "hidden";
-    // Set the text in the hidden element
-    // messageDisplay.innerHTML = introText;
-    // type(0, 100, "intro", "intro");
-    type(introText, 0, 100, "intro"); // Pass the text directly to the type function
+
+    type(introText, 0, 100, "intro", () => {
+        introToGameButton.style.display = 'block'; // Show the button when typing is complete
+    });
 
 }
 
 function loadGame(){
 
     messageDisplay.textContent = "";
-    messageDisplayGame.textContent = "'BleepBoopBlurghBahh - We are taking a jacket, apple, vase, ant and sunglasses. If you don't want us to zap you, please bring us an item we will like...' \nCan you bring them a good item? "
+    // messageDisplayGame.textContent 
+    const gameText = "'👽BleepBoopBlurghBahh👽 - We are taking a JACKET, APPLE, VASE, ANT and SUNGLASSES. If you don't want us to zap you 🔫, please bring us an item we will like...' Can you bring them a good item? "
     introToGameButton.style.display = 'none';
     // messageDisplay.textContent = ""
     // generate words, including correct word
@@ -96,10 +100,13 @@ function loadGame(){
             getHearts[i].style.visibility = "visible" ;
         }
       }
-    
+      type(gameText, 0, 100, "intro", () => {
+        // introToGameButton.style.display = 'block'; // Show the button when typing is complete
+        generateOption(selectedWord); 
+        createButtons();
+    });
     // Generate words, including the correct word
-    generateOption(selectedWord); 
-    createButtons();
+    
 }
 
 function generateOption(correctWord) {
@@ -185,15 +192,20 @@ function restartGame() {
     messageDisplayGuess.textContent = '';
     messageDisplayGuess.style.color = 'black';
 
+    // Reset hearts display
+    for (let i = 0; i < getHearts.length; i++) {
+        getHearts[i].style.visibility = 'hidden'; // Hide all hearts initially
+    }
+
     //Reset display elements 
     tryAgainButton.style.display = 'none';
     optionsContainer.style.display = 'none';
 
-    const getHearts = [
-        document.getElementById('heart1'), 
-        document.getElementById('heart2'),
-        document.getElementById('heart3')
-    ];
+    // const getHearts = [
+    //     document.getElementById('heart1'), 
+    //     document.getElementById('heart2'),
+    //     document.getElementById('heart3')
+    // ];
 
     introScreen();
 
