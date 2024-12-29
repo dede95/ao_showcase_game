@@ -181,7 +181,7 @@ function gameOver() {
 }
 
 function gameWin(){
-    messageDisplayGuess.textContent = `Congrats! You can board with us 👽`;
+    messageDisplayGuess.textContent = `"Correct! You can board with us 👽" The aliens needed "CORN" to spell out J-A-V-A-S-C-R-I-P-T ☑️`;
     messageDisplayGuess.style.color = "green";
     tryAgainButton.style.display = 'block';
     const allButtons = document.querySelectorAll('.option-btn');
