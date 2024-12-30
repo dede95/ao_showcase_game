@@ -29,6 +29,30 @@ a:hover {
     color: rgb(113, 151, 255);
 }
 
+ul {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.hobby {
+    flex: 1;
+    font-weight: 500;
+    height: 30px;
+    width: auto;
+    padding: 8px;
+    background-color: rgb(255, 171, 102);
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+
+
 /* HERO SECTION */
 
 .hero-section {
